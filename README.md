@@ -2,6 +2,13 @@
 
 # Setup
 
+## PSQL Docker
+
+1. `docker pull postgres`
+2. `docker run --name my-postgres -e POSTGRES_PASSWORD=mysecretpassword -p 0.0.0.0:5432:5432 -d postgres`
+
+## Flask
+
 #### Run the following commands:
 
 1. `export FLASK_APP=run.py`
