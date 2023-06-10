@@ -15,6 +15,13 @@
    2.  Run postgres with network
        1. `docker run --name my-postgres --network flask_psql_network -p 5432:5432 -e POSTGRES_PASSWORD=mysecretpassword -d postgres`
 
+   3. Run the flask app
+      1. `sh redploy.sh`
+   4. Access the flask app
+      1. `http://0.0.0.0:9000/api/test`
+
+ 
+
 2. ## Local
    1. Run without docker network
       1. `docker run --name my-postgres -e POSTGRES_PASSWORD=mysecretpassword -p 0.0.0.0:5432:5432 -d postgres`
