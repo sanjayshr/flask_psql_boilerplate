@@ -2,12 +2,27 @@
 
 # Setup
 
-## PSQL Docker
+> Pull postgres docker image
+   1. `docker pull postgres`
 
-1. `docker pull postgres`
-2. `docker run --name my-postgres -e POSTGRES_PASSWORD=mysecretpassword -p 0.0.0.0:5432:5432 -d postgres`
+   
+## Options 
+1. ## Docker network
+
+   1. Run with docker network
+      1.  Create docker network
+       2.  `docker network flask_psql_network`
+   2.  Run postgres with network
+       1. `docker run --name my-postgres --network flask_psql_network -p 5432:5432 -e POSTGRES_PASSWORD=mysecretpassword -d postgres`
+
+2. ## Local
+   1. Run without docker network
+      1. `docker run --name my-postgres -e POSTGRES_PASSWORD=mysecretpassword -p 0.0.0.0:5432:5432 -d postgres`
 
 ## Flask
+
+### Run the flask_psql container
+`docker run --name flask_psql --network flask_psql_network -p 5000:5000 -d flask_psql`
 
 #### Run the following commands:
 

@@ -4,6 +4,10 @@ from app.database import db
 
 user = Blueprint('user', __name__)
 
+@user.route('/api/test', methods=['GET'])
+def test():
+    return jsonify({'message': 'Hello, World!'})
+
 @user.route('/api/users', methods=['GET'])
 def get_users():
     users = User.query.all()
