@@ -3,6 +3,8 @@ from flask_migrate import Migrate
 from app.routes.user import user as user_blueprint
 from .database import db
 from sqlalchemy_utils import database_exists, create_database
+from sqlalchemy.exc import OperationalError
+from time import sleep
 
 
 migrate = Migrate()
@@ -15,9 +17,15 @@ def create_app():
     migrate.init_app(app, db)
 
     with app.app_context():
-        if not database_exists(db.engine.url):
-            create_database(db.engine.url)
-        db.create_all()
+        while True:
+            try:
+                if not database_exists(db.engine.url):
+                    create_database(db.engine.url)
+                db.create_all()
+                break
+            except OperationalError:
+                print("Database not ready yet...")
+                sleep(5)
 
     app.register_blueprint(user_blueprint)
 

@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    command: python run.py
+    volumes:
+      - .:/app
+    ports:
+      - 9000:5000
+    depends_on:
+      - db
+    networks:
+      - webnet
+
+  db:
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: mysecretpassword
+      POSTGRES_DB: myflaskdb
+    ports:
+      - 5432:5432
+    networks:
+      - webnet
+
+networks:
+  webnet:
