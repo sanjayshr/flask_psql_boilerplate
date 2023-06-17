@@ -11,7 +11,7 @@
 
    1. Run with docker network
       1.  Create docker network
-       2.  `docker network flask_psql_network`
+       2.  `docker network create flask_psql_network`
    2.  Run postgres with network
        1. `docker run --name my-postgres --network flask_psql_network -p 5432:5432 -e POSTGRES_PASSWORD=mysecretpassword -d postgres`
 
