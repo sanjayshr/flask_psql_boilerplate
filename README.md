@@ -10,3 +10,9 @@ docker-compose up -d
 ```shell
 sh redeploy.sh
 ```
+
+# Test
+
+```shell
+ curl -vvv -X GET http://0.0.0.0:9000/api/test
+```
