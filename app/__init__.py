@@ -1,6 +1,7 @@
 from flask import Flask
 from flask_migrate import Migrate
 from app.routes.user import user as user_blueprint
+from app.routes.hello import hello as hello_blueprint
 from .database import db
 from sqlalchemy_utils import database_exists, create_database
 from sqlalchemy.exc import OperationalError
@@ -28,5 +29,6 @@ def create_app():
                 sleep(5)
 
     app.register_blueprint(user_blueprint)
+    app.register_blueprint(hello_blueprint)
 
     return app
